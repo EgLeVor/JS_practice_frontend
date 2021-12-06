@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div class="card1">
+    <div class="card1 base_card">
       <h1>{{ msg }}</h1>
       <p>Борис Борисович Рыжий</p>
       <p>БСБО-04-19</p>
@@ -8,7 +8,7 @@
       <img alt="Vue logo" src="../assets/1234.jpg">
       <p>Я поэт, физик, люблю заниматься боксом и смотреть на панельки...</p>
     </div>
-    <div class="card2">
+    <div class="card2 base_card">
       <form id="form" class="form1" @submit.prevent="onFormSubmit">
         <ul>
           <input
@@ -62,22 +62,18 @@ export default {
 }
 </script>
 <style wscoped>
-#hello, .card1{
+.base_card{
   border-radius: 10px;
   box-shadow: 0 0 10px black;
   background-color: gray;
   max-width: 500px;
-  float: left;
-  height: 700px;
+  height: 750px;
   width: 1000px;
 }
-#hello, .card2{
-  border-radius: 10px;
-  box-shadow: 0 0 10px black;
-  background-color: gray;
-  max-width: 500px;
+.card1{
+  float: left;
+}
+.card2{
   float: right;
-  height: 700px;
-  width: 1000px;
 }
 </style>

@@ -1,0 +1,84 @@
+h2 {
+    margin: 0;
+}
+
+body{
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background-image: url("fallout.jpg");
+}
+
+@font-face {
+    font-family: "Fallout Regular";
+    src: url("/fonts/Fallout Regular/fallout.ttf") format("truetype");
+    src: url("/fonts/Fallout Regular/fallout.eot");
+    src: url("/fonts/Fallout Regular/fallout.woff") format("woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+#app {
+    font-family:'Fallout Regular', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: black;
+    padding: 120px 20px 40px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.page-title{
+    font-size: 32px;
+    color: rgb(245, 245, 220);
+    font-weight: 600;
+}
+
+.page-container {
+    width: 100%;
+    margin-top: 32px;
+}
+
+.auth-form {
+    border: black 4px groove;
+    background: white;
+    border-radius: 20px;
+    width: 100%;
+    min-height: 300px;
+    padding: 32px 24px;
+    box-shadow: 0 0 10px black
+}
+
+.form-field {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: left;
+    gap: 16px
+}
+
+.form-field imput {
+    border: 1px solid green;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+.submit-btn {
+    margin-top: 32px;
+    padding: 12px 34px;
+    background: rgba(0, 255, 0, 0.575);
+    color: white;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.auth-form .action-link {
+    margin-top: 16px;
+}
