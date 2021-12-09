@@ -82,3 +82,99 @@ body{
 .auth-form .action-link {
     margin-top: 16px;
 }
+
+*{
+    box-sizing: border-box;
+}
+
+.create-todo input {
+    border: 1px solid rgb(0, 92, 167);
+    background: rgb(255, 255, 255);
+    padding: 15px 25px;
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 400;
+    /* width: 1%; */
+    margin-right: 10px;
+}
+
+.create-todo button {
+    cursor: pointer;
+    border: 1px solid rgb(0, 92, 167);
+    background: lime;
+    padding: 15px 25px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+}
+
+.separator {
+    margin-top: 40px;
+    padding: 6px 20px;
+    width: 100%;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 125%;
+    padding-inline-start: 0px;
+}
+
+.todo-item{
+    width: 125%;
+    padding: 20px 32px;
+    margin-bottom: 40px;
+    margin-right: 140px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 92, 167);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.todo-item .title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.todo-item .actions {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 10px
+}
+
+.todo-item button {
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
+    background: lime;
+    color: rgb(0, 0, 0);
+    margin: auto;
+    font-size: 10px;
+    font-weight: 700;
+    
+}
+
+.todo-item .checkbox {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #113961;
+    border-radius: 12px;
+}
+
+.todo-item.done {
+    opacity: 0.7;
+}
+
+.todo-item.done .title{
+    text-decoration: line-through;
+}

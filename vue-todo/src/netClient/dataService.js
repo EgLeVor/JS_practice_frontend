@@ -33,13 +33,7 @@ export async function doLogin(login, password){
 
 export async function doLogout(){
     try{
-        const response = await http.post('/user/logout', {},
-        {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': localStorage.accessToken
-            }
-        });
+        const response = await http.post('/user/logout');
         localStorage.removeItem('accessToken');
         return response.data;
     }
@@ -51,17 +45,37 @@ export async function doLogout(){
 
 export async function fetchTodoList(){
     try {
-        const response = await http.get('/todos',
-        {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': localStorage.accessToken
-            }
-        });
+        const response = await http.get('/todos');
         return response.data?.todos || [];
     }
     catch(error){
         console.error({error});
         throw error;
+    }
+}
+
+export async function createTodo({ title }){
+    try{
+        const responce = await http.post('/todos', 
+        {
+            title
+        })
+        return responce?.data?? {}
+    }
+    catch(error){
+        console.error({error})
+    }
+}
+
+export async function patchTodo({ id, isCompleted }){
+    try{
+        const responce = await http.patch('/todos/' + id, 
+        {
+            isCompleted
+        })
+        return responce?.data?? {}
+    }
+    catch(error){
+        console.error({error})
     }
 }

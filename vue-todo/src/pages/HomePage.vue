@@ -1,39 +1,68 @@
 <template>
-  <div id="home">
-    <section class="create-todo">
-      <input type="text" placeholder="Название дела">
-      <button>Создать</button>
-    </section>
-    <section class="todo-list">
-      <h1>TODOLIST</h1>
-      <ul>
-        <li v-for="todoItem in todoList" :key="todoItem.id">
-           {{todoItem}} 
+  <div class="home-page base-page">
+      <CreateTodo @todocreated="onTodoCreated" />
+      <div class="separator"><hr /></div>
+      <ul class="todo-list">
+        <li
+          v-for="todoItem in todoList"
+          :key="todoItem.id"
+          class="todo-item"
+          :class="{ done: todoItem.isCompleted }"
+        >
+          <div class="title">
+            {{ todoItem.title }}
+          </div>
+          <div class="actions">
+            <input
+              type="checkbox"
+              class="checkbox"
+              :checked="todoItem.isCompleted"
+              @input="
+                onCheckBoxInput(todoItem.id, todoItem.isCompleted)
+              " 
+            />
+            <button>&#10006;</button>
+          </div>
         </li>
       </ul>
-    </section>
   </div>
 </template>
 
 <script>
-import { fetchTodoList } from '@/netClient/dataService';
+import CreateTodo from '@/components/CreateTodo';
+import { fetchTodoList, patchTodo } from '@/netClient/dataService';
 export default {
-    
-    name: 'HomePage',
-    data: () => ({
-        todoList: [],
-    }),
-    created() {
+  name: 'Home',
+  components: {
+    CreateTodo,
+  },
+  data: () => ({
+      todoList: []
+  }),
+  created () {
+    this.fetchTodoList()
+  },
+  methods: {
+    onTodoCreated() {
+      this.fetchTodoList();
+    },
+    async fetchTodoList() {
+      try {
+        this.todoList = await fetchTodoList()
+      }
+      catch(error){
+        console.warn({ error })
+      }
+    },
+    async onCheckBoxInput(id, isCompleted){
+      try {
+        await patchTodo({ id, isCompleted: !isCompleted });
         this.fetchTodoList();
-    },
-    methods: {
-        async fetchTodoList() {
-            try {
-                this.todoList = await fetchTodoList();
-            } catch(error) {
-                console.error({ error })
-            }
-        },
-    },
+      }
+      catch (error) {
+        console.error({ error })
+      }
+    }
+  }
 };
 </script>
