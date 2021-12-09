@@ -1,6 +1,8 @@
 <template>
   <div id="home">
     <section class="create-todo">
+      <input type="text" placeholder="Название дела">
+      <button>Создать</button>
     </section>
     <section class="todo-list">
       <h1>TODOLIST</h1>
